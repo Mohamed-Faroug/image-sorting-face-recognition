@@ -28,4 +28,32 @@ Make sure you have the following libraries installed:
 3. Run the script:
 
    ```bash
-   python sort_images.py
+   python sorted_faces_&_classify_image_v1.py
+The script will:
+Detect faces and move the images into corresponding folders by person.
+If no faces are detected, it will classify the image based on its feature (e.g., "beach", "city", etc.) and move it into a corresponding folder.
+How It Works
+The script uses Face Recognition to detect and recognize faces in the images in the images/ folder.
+If a face is detected, the script compares it against known faces and moves the image to the respective person's folder.
+If no faces are detected, the script classifies the image using the InceptionV3 model (pre-trained on ImageNet) and moves the image to a folder corresponding to the scene (e.g., "beach", "city").
+Folder Structure
+After running the script, the images will be sorted into the following folder structure:
+
+    ```sorted_images/
+       ├── Person_1/
+       ├── Person_2/
+       ├── beach/
+       ├── city/
+       ├── ...
+Error Handling
+Images with no faces are automatically classified by scene and moved to the appropriate folder.
+Errors during image processing (e.g., corrupt images) are caught, and the script moves on to the next image.
+Contributing
+Feel free to fork the repository, make changes, and submit a pull request. If you have any suggestions or improvements, feel free to open an issue.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Acknowledgments
+face_recognition: A library built on top of dlib for face recognition.
+TensorFlow & InceptionV3: Used for feature classification of images.
